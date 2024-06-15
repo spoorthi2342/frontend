@@ -5,7 +5,7 @@ import p1 from '../assets/art-artwork-1822831.jpg'
 
 const ProductCard = () => {
     return (
-        <Link href={"../Product"} className='transform overflow-hidden  bg-white duration-200 hover:scale-105 cursor-pointer'>
+        <Link href="../Product/1" className='transform overflow-hidden  bg-white duration-200 hover:scale-105 cursor-pointer'>
             <Image
                 className='w-full '
                 src={p1}

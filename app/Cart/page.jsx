@@ -54,7 +54,7 @@ const Cart = () => {
                           
 
                         </div>
-                        <div className="flex-[2] flex flex-col items-center pb-[50px] md:mt-4">
+                        {/* <div className="flex-[2] flex flex-col items-center pb-[50px] md:mt-4">
                             <Image
                             src={empty}
                             alt="empty cart"
@@ -72,7 +72,7 @@ const Cart = () => {
                             <Link href={"/"} className=" py-4 px-8 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 mt-8">
                                 continue shopping
                             </Link>
-                        </div>
+                        </div> */}
             
         </Wrapper>
     </div>
