@@ -13,7 +13,7 @@ async function getProducts() {
   const products = await fetchdataFromAPi("/api/products?populate=*");
   return products;
 }
-
+<h1></h1>
 export default function Home() {
   const [products, setProducts] = React.useState(null);
 
