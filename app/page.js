@@ -9,27 +9,27 @@ import { fetchdataFromAPi } from "@/utils/api";
 import React,{useState,useEffect} from "react";
 
 // Fetch data inside the component
-async function getProducts() {
-  const products = await fetchdataFromAPi("/api/products?populate=*");
-  return products;
-}
-<h1></h1>
+// async function getProducts() {
+//   const products = await fetchdataFromAPi("/api/products?populate=*");
+//   return products;
+// }
+// <h1></h1>
 export default function Home() {
-  const [products, setProducts] = React.useState(null);
+  // const [products, setProducts] = React.useState(null);
 
-  React.useEffect(() => {
-    async function fetchData() {
-      const data = await getProducts();
-      setProducts(data);
-    }
+  // React.useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await getProducts();
+  //     setProducts(data);
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
       <HeroBanner/>
-      <h1>{products?.data?.[0]?.attributes?.name}</h1>
+
       <Wrapper>
         <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
           <div className="font-bold text-lg">Adding Colours to Your Life!!</div>
@@ -37,9 +37,12 @@ export default function Home() {
             inspires connection, and enriches lives.</div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
-          {products?.data?.map((product, index) => (
-            <ProductCard key={index} product={product}/>
-          ))}
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
         </div>
       </Wrapper>
     </div>
