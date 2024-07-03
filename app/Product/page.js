@@ -3,14 +3,19 @@ import { IoMdHeartEmpty } from 'react-icons/io'
 import Wrapper from '@/app/components/Wrapper'
 import ProductCardDetails from '@/app/components/ProductCardDetails'
 import RelatedProduct from '@/app/components/RelatedProduct'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const ProductDetails = () => {
     return (
-        <div className='w-full md:py-20'>
+        <div>
+            <Header/>
+              <div className='w-full md:py-20'>
             {/* <Wrapper> */}
                 <div className='flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]'>
                     <div className='w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0'>
-                       <ProductCardDetails/></div>
+                       <ProductCardDetails/>
+                       </div>
                     <div className='flex-[1] py-3'>
                         <div className='text-[34px] font-semibold mb-2'>
                             Acrylic Painting
@@ -91,6 +96,9 @@ const ProductDetails = () => {
             {/* </Wrapper> */}
 
         </div>
+        <Footer/>
+        </div>
+      
     )
 }
 

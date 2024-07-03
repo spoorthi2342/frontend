@@ -24,7 +24,7 @@ const RelatedProduct = () => {
 
     return (
         <div className='mt-0'>
-            <Header />
+            {/* <Header /> */}
      <div className="mt-[50px] md:mt-[100px] mb-[100px] md:mb-0">
             <div className="text-2xl font-bold mb-5">You Might Also Like</div>
             <Carousel responsive={responsive}
@@ -33,13 +33,13 @@ const RelatedProduct = () => {
                 <ProductCard/>
                 <ProductCard/>
                 <ProductCard/>
+                {/* <ProductCard/>
                 <ProductCard/>
                 <ProductCard/>
-                <ProductCard/>
-                <ProductCard/>
+                <ProductCard/> */}
             </Carousel>
         </div>
-        <Footer/>
+        {/* <Footer/> */}
         </div>
         
     );
