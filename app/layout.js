@@ -28,10 +28,10 @@ export default function RootLayout({ children }) {
                     rel="stylesheet"
                 />
         <Provider>
-        <Header/>
+        {/* <Header/> */}
         
   {children}
-  <Footer/>
+  {/* <Footer/> */}
         </Provider>
       
       </body>

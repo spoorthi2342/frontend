@@ -7,6 +7,8 @@ import Wrapper from "./components/Wrapper";
 import ProductCard from "./components/ProductCard";
 import { fetchdataFromAPi } from "@/utils/api";
 import React,{useState,useEffect} from "react";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // Fetch data inside the component
 // async function getProducts() {
@@ -28,6 +30,7 @@ export default function Home() {
 
   return (
     <div>
+      <Header/>
       <HeroBanner/>
 
       <Wrapper>
@@ -36,15 +39,12 @@ export default function Home() {
           <div>Art is a multifaceted expression of human creativity and emotion that transcends boundaries, 
             inspires connection, and enriches lives.</div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0">
+        <div className="">
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        
         </div>
       </Wrapper>
+      <Footer/>
     </div>
   );
 }

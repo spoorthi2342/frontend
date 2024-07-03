@@ -1,16 +1,18 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setError(''); //
 
     try {
       const response = await fetch('http://localhost:5000/api/users', {
@@ -23,10 +25,12 @@ const Register = () => {
 
       if (response.ok) {
         console.log('Registration successful');
-        // Handle successful registration
+        // Redirect to the homepage
+        router.push('/');
       } else {
-        setError('Registration failed. Please check your details and try again.');
-        console.error('Registration failed');
+        const errorData = await response.json();
+        setError(errorData.error || 'Registration failed. Please check your details and try again.');
+        console.error('Registration failed:', errorData);
       }
     } catch (error) {
       setError('An error occurred. Please try again later.');
@@ -41,7 +45,7 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            placeholder="Username"
+            placeholder=" Enter your Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -49,7 +53,7 @@ const Register = () => {
           />
           <input
             type="email"
-            placeholder="Email"
+            placeholder=" Enter your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -57,7 +61,7 @@ const Register = () => {
           />
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -69,10 +73,8 @@ const Register = () => {
           >
             Register
           </button>
-          <p className='text-blue-500'>Already have Account?
-          <Link href='../login'>
-                  Login
-                </Link>
+          <p className='text-blue-500'>Already have an account?
+            <Link href='../UserLogin'>Login</Link>
           </p>
         </form>
         {error && <p className="mt-4 text-center text-red-500">{error}</p>}

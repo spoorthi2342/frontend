@@ -1,4 +1,3 @@
-// Header.js
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -18,7 +17,7 @@ const Header = () => {
   const [showCartMenu, setShowCartMenu] = useState(false);
   const [show, setShow] = useState('translate-y-0');
   const [lastScrolly, setLastScrolly] = useState(0);
-  const [showDropdown, setShowDropdown] = useState(false); // State for dropdown menu
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
@@ -38,15 +37,15 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrolly]);
+  }, [lastScrolly, mobileMenu]);
 
   const toggleDropdown = () => {
-    setShowDropdown(!showDropdown); // Toggle dropdown menu state
+    setShowDropdown(!showDropdown);
   };
 
-  const closeDropdown=()=>{
-    setShowDropdown(false)
-  }
+  const closeDropdown = () => {
+    setShowDropdown(false);
+  };
 
   return (
     <header className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}>
@@ -77,23 +76,19 @@ const Header = () => {
               </div>
             </div>
           </Link>
-
           <div className='relative'>
             <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer' onClick={toggleDropdown}>
               <VscAccount className='text-[15px] md:text-[20px]' />
             </div>
             {showDropdown && (
               <div className='absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-10'>
-              
-                <Link href='../register'>
-                  <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100'onClick={closeDropdown}>Sign Up</div>
+                <Link href='../UserRegister'>
+                  <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' onClick={closeDropdown}>Sign Up/Sign In</div>
                 </Link>
-                
               </div>
             )}
           </div>
-
-          <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center  hover:bg-black/[0.05] cursor-pointer relative -mr-2'>
+          <div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2'>
             {mobileMenu ? (
               <VscChromeClose className='text-[16px]' onClick={() => setMobileMenu(false)} />
             ) : (

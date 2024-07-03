@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from '../login';
-import Register from '../register';
+import Login from '../UserLogin';
+import Register from '../UserRegister';
 
 const App = () => {
   const handleLogin = async (email, password) => {
