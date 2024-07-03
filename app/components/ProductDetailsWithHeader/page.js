@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
-import ProductDetails from '../../Product/[slug]/page'
+import ProductDetails from '../../Product'
 
 const productDetailwithHeader = () => {
   return (
