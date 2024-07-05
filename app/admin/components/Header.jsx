@@ -1,33 +1,33 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import logo from '../assets/dummylogo.jpg';
-import Wrapper from './Wrapper';
+import logo from '../../assets/dummylogo.jpg';
+import Wrapper from '../../components/Wrapper';
 import Link from 'next/link';
-import Menu from './Menu';
+import Menu from '../../components/Menu';
 import { IoMdHeartEmpty } from 'react-icons/io';
 import { BsCart } from 'react-icons/bs';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { VscAccount } from "react-icons/vsc";
-import MobileMenu from './MobileMenu';
+import MobileMenu from '../../components/MobileMenu';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(true);
   const [showCartMenu, setShowCartMenu] = useState(false);
   const [show, setShow] = useState('translate-y-0');
   const [lastScrolly, setLastScrolly] = useState(0);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [isUser, SetIsUser]= useState(false);
+  const [isAdmin,setIsAdmin]= useState(false);
+  const router=useRouter()
 
-  useEffect (()=>{
-    const userLogin= localStorage.getItem('userLoggedIn');
-    if(userLogin === 'ture'){
-      SetIsUser(true)
-      
-    }
-    else{
-      SetIsUser(false)
+  useEffect(()=>{
+    const adminLoggedIn= localStorage.getItem('adminLoggedIn');
+    if(adminLoggedIn=== 'true')
+    {
+        setIsAdmin(true);
+
     }
   },[]);
 
@@ -58,9 +58,10 @@ const Header = () => {
   const closeDropdown = () => {
     setShowDropdown(false);
   };
+
   const handleLogOut=()=>{
-    localStorage.removeItem('userLoggedIn')
-    SetIsUser(false);
+    localStorage.removeItem('adminLoggedIn')
+    setIsAdmin(false)
     router.push('/')
   }
 
@@ -99,16 +100,15 @@ const Header = () => {
             </div>
             {showDropdown && (
               <div className='absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-10'>
-                {isUser ?
-                (<div
-                  className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'
-                  onClick={handleLogOut}>
-                    Logout </div>)
-                    :(
-                  <Link href='../UserRegister'>
+              {isAdmin ? (<div 
+              className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer'
+              onClick={handleLogOut}>
+                Logout
+
+              </div>):(  
+                <Link href='../UserRegister'>
                   <div className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100' onClick={closeDropdown}>Sign Up/Sign In</div>
-                </Link>
-                )}
+                </Link>)}
               </div>
             )}
           </div>
