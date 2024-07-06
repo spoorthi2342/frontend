@@ -10,24 +10,9 @@ import React,{useState,useEffect} from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Fetch data inside the component
-// async function getProducts() {
-//   const products = await fetchdataFromAPi("/api/products?populate=*");
-//   return products;
-// }
-// <h1></h1>
+
 export default function Home() {
-  // const [products, setProducts] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   async function fetchData() {
-  //     const data = await getProducts();
-  //     setProducts(data);
-  //   }
-
-  //   fetchData();
-  // }, []);
-
+ 
   return (
     <div>
       <Header/>

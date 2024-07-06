@@ -1,16 +1,20 @@
-"use client"
+'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const ProductCard = () => {
     const [products, setProducts] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
         const fetchProducts = () => {
             fetch('http://localhost:5000/api/admin/products')
                 .then(response => response.json())
-                .then(data => setProducts(data))
+                .then(data => {
+                    console.log('Fetched data', data);
+                    setProducts(data);
+                })
                 .catch(error => console.error('Error fetching products:', error));
         };
 
@@ -30,31 +34,34 @@ const ProductCard = () => {
         }
     };
 
+    const handleProductClick = (id) => {
+        router.push(`/Product/${id}`);
+    };
+
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0 justify-between'>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 my-14 px-5 md:px-0">
             {products.map(product => (
-                <Link key={product._id} href={`/Products/${product._id}`}>
-                    <div className='transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer'>
-                        <Image
-                            className='w-full h-full'
-                            src={getImagePath(product.image)}
-                            alt={product.name || 'Product Image'}
-                            height={500}
-                            width={500}
-                            priority={true}
-                        />
-                        <div className='text-lg font-medium p-4'>
-                            <h2 className='text-lg font-medium'>{product.name}</h2>
-                            <div className='flex items-center text-black/[0.5]'>
-                                <p className='mr-2 text-lg font-semibold'>${product.price}</p>
-                            </div>
-                        </div>
+                <div 
+                    key={product._id} 
+                    onClick={() => handleProductClick(product._id)} 
+                    className="transform overflow-hidden bg-white rounded-lg shadow-lg hover:scale-105 cursor-pointer"
+                >
+                    <Image
+                        className="w-full h-64 object-cover"
+                        src={getImagePath(product.image)}
+                        alt={product.name || 'Product Image'}
+                        height={500}
+                        width={500}
+                        priority={true}
+                    />
+                    <div className="p-4">
+                        <h2 className="text-lg font-medium text-gray-900">{product.name}</h2>
+                        <p className="text-lg font-semibold text-green-500">${product.price}</p>
                     </div>
-                </Link>
+                </div>
             ))}
         </div>
     );
 };
 
 export default ProductCard;
-

@@ -5,14 +5,19 @@ import Link from "next/link";
 import Wrapper from "../components/Wrapper";
 import CartItem from "../components/CartItem";
 import empty from '../assets/empty-cart.jpg'
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 // import { useSelector } from "react-redux";
 
 // import { makePaymentRequest } from "@/utils/api";
 // import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
+    
   return (
-    <div className="w-full md:py-20">
+   <div>
+    <Header/>
+     <div className="w-full md:py-20">
         <Wrapper>
         <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
                             <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
@@ -76,6 +81,8 @@ const Cart = () => {
             
         </Wrapper>
     </div>
+    <Footer/>
+   </div>
   )
 }
 
